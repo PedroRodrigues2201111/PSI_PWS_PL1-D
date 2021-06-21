@@ -1,0 +1,89 @@
+<?php
+use ArmoredCore\WebObjects\URL;
+ ?>
+
+<footer id="footer" class="top-space">
+
+  <div class="footer1">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-3 widget">
+          <h3 class="widget-title">Contactos</h3>
+          <div class="widget-body">
+            <p>+351 244 310 100<br>
+              <a href="mailto:#">FlightTravelAir@gmail.com</a><br>
+              <br>
+              FlightTravelAir, Companhia Aérea<br>
+              Morro do Lena, Campus 2<br>
+              2400 Leiria<br>
+              Portugal<br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-3 widget">
+          <h3 class="widget-title">Acompanhe-nos</h3>
+          <div class="widget-body">
+            <p class="follow-me-icons">
+              <!-- Redes Sociais da Tap Portugal -->
+              <a href="https://twitter.com/TAP_Portugal"><i class="fa fa-twitter fa-2"></i></a>
+              <a href=""><i class="fa fa-dribbble fa-2"></i></a>
+              <a href="https://www.instagram.com/tapairportugal/?hl=pt"><i class="fa fa-instagram fa-2"></i></a>
+              <a href="https://www.facebook.com/search/top?q=tap%20air%20portugal"><i class="fa fa-facebook fa-2"></i></a>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 widget">
+          <div class="widget-body">
+            <p>Viaje connosco!</p>
+          </div>
+          <h3 class="widget-title">FlightTravelAir</h3>
+        </div>
+
+      </div> <!-- /row of widgets -->
+    </div>
+  </div>
+
+  <div class="footer2">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-6 widget">
+          <div class="widget-body">
+            <p class="simplenav">
+              <a href="<?=Url::toRoute('home/index')?>">Principal</a> |
+              <a href="<?=Url::toRoute('reservar/index')?>">Reserve</a> |
+              <a href="<?=Url::toRoute('login/loginform')?>">Login/Terminar Sessão</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 widget">
+          <div class="widget-body">
+            <p class="text-right">
+              Copyright &copy;2021, Pedro Rodrigues, Pws <br> Site template by Sergey Pozhilov.
+            </p>
+          </div>
+        </div>
+
+      </div> <!-- /row of widgets -->
+    </div>
+  </div>
+
+</footer>
+
+<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+
+<?php
+use ArmoredCore\Facades\AssetBundler;
+use ArmoredCore\Facades\DebugRenderer;
+?>
+
+<?=AssetBundler::js()?>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

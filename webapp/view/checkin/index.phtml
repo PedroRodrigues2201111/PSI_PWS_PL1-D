@@ -1,0 +1,55 @@
+<?php
+use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+
+// Incluir o layout do header
+Layout::includeLayout('operadorheader') ?>
+<?php $users = Data::get('users') ?>
+
+<!-- container -->
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li><a href="<?=URL::toRoute('admin/index')?>">Principal</a></li>
+        <li class="active">Realizar check-in de um passageiro</li>
+    </ol>
+
+    <h2 class="text-left top-space">Passageiros do Aeroporto</h2>
+    <h2 class="top-space"></h2>
+    <div class="row">
+        <div class="col-sm-12">
+
+          <!-- Titulos das colunas da tabela -->
+            <table class="table table-striped"><thead><th><h3>Nome de utilizador</h3></th><th><h3>Nome</h3></th><th><h3>Morada</h3></th><th><h3>Email</h3></th><th><h3>Nif</h3></th><th><h3>Contato</h3></th><th><h3>Role</h3></th></thead>
+                <tbody>
+                <?php foreach ($users as $user) { ?>
+                    <tr>
+
+                      <!-- Vários campos do utilizador a mostrar na tabela -->
+                        <td><?=$user->username?></td>
+                        <td><?=$user->name?></td>
+                        <td><?=$user->morada?></td>
+                        <td><?=$user->email?></td>
+                        <td><?=$user->nif?></td>
+                        <td><?=$user->telefone?></td>
+                        <td><?=$user->role?></td>
+                        <td>
+
+                          <!-- Botões editar e apagar -->
+                            <a href="<?=Url::toRoute('checkin/edit', $user->id)?>" class="btn btn-info" role="button">Realizar check-in</a>
+                        </td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- /row -->
+
+</div>
+<!-- /container -->
+
+<!-- Incluir o layout do footer -->
+<?php Layout::includeLayout('footer')?>

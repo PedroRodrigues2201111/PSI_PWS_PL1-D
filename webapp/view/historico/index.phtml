@@ -1,0 +1,53 @@
+<?php
+use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+
+Layout::includeLayout('indexheaderdologin') ?>
+<?php $flights = Data::get('flights') ?>
+
+    <!-- container -->
+    <div class="container">
+
+        <ol class="breadcrumb">
+            <li><a href="<?=URL::toRoute('gestorvoo/index')?>">Principal</a></li>
+            <li class="active">Histórico</li>
+        </ol>
+
+        <h2 class="text-left top-space">Histórico de voos</h2>
+        <h2 class="top-space"></h2>
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-striped"><thead><th><h3>Nome</h3></th><th><h3>Origem</h3></th><th><h3>Destino</h3></th><th><h3>Data de Partida</h3></th><th><h3>Data de Regresso</h3></th><th><h3>Preco</h3></th></thead>
+                    <tbody>
+                    <?php foreach ($flights as $flight) { ?>
+                        <tr>
+                          <td class="text-center"><?=$flight->id?></td>
+                          <td class="text-center"><?=$flight->precoidaevolta?></td>
+                          <td class="text-center"><?=$flight->idairportorigin?></td>
+                          <td class="text-center"><?=$flight->dtorigin?></td>
+                          <td class="text-center"><?=$flight->hrorigin?></td>
+                          <td class="text-center"><?=$flight->idairportdestination?></td>
+                          <td class="text-center"><?=$flight->dtdestination?></td>
+                          <td class="text-center"><?=$flight->hrdestination?></td>
+                            <td>
+                                <a href="<?=Url::toRoute('flight/destroy', $flight->id)?>" class="btn btn-warning" role="button">Apagar</a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+            <div class="col-sm-6">
+                <h3>Apagar histórico completo</h3>
+                <p>
+                    <a href="<?=Url::toRoute('flight/destroyall', $flight->id)?>" class="btn btn-info" role="button">Apagar</a>
+                </p>
+            </div>
+        </div> <!-- /row -->
+
+    </div>	<!-- /container -->
+<?php Layout::includeLayout('footer')?>

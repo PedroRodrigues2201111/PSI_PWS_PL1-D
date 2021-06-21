@@ -1,0 +1,91 @@
+<?php use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\ErrMgr;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+
+Layout::includeLayout('adminappheader') ?>
+<?php $user = Data::get('user')?>
+<?php ErrMgr::attach($user) ?>
+
+
+<!-- container -->
+<div class="container">
+
+    <div class="row">
+
+        <!-- Article main content -->
+        <article class="col-xs-12 maincontent">
+            <header class="page-header">
+                <h1 class="page-title">Novo membro de Staff</h1>
+            </header>
+
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <hr>
+                        <form method="post" action="<?=Url::toRoute('user/store')?>">
+                            <div class="top-margin">
+                                <label>Username <span class="text-danger">*</span></label>
+                                <input required type="text" value="<?=$user->username?>" name="username" class="form-control" placeholder="Insira o nome de utilizador">
+                                <?= ErrMgr::bind('username') ?>
+                            </div>
+                            <div class="top-margin">
+                                <label>Passoword <span class="text-danger">*</span></label>
+                                <input required type="text" value="<?=$user->password?>" name="password" class="form-control" placeholder="Insira a palavra-passe">
+                                <?= ErrMgr::bind('password') ?>
+                            </div>
+                            <div class="top-margin">
+                                <label>Name <span class="text-danger">*</span></label>
+                                <input required type="text" value="<?=$user->name?>" name="name" class="form-control" placeholder="Insira o nome">
+                                <?= ErrMgr::bind('name') ?>
+                            </div>
+                            <div class="top-margin">
+                                <label>Morada <span class="text-danger">*</span></label>
+                                <input required type="text" value="<?=$user->morada?>" name="morada" class="form-control" placeholder="Insira a morada">
+                                <?= ErrMgr::bind('morada') ?>
+                            </div>
+                            <div class="top-margin">
+                                <label>Email <span class="text-danger">*</span></label>
+                                <input required type="text" value="<?=$user->email?>" name="email" class="form-control" placeholder="Insira o email">
+                                <?= ErrMgr::bind('email') ?>
+                            </div>
+                            <div class="top-margin">
+                                <label>Nif <span class="text-danger">*</span></label>
+                                <input required type="text" value="<?=$user->nif?>" name="nif" class="form-control" placeholder="Insira o nif">
+                                <?= ErrMgr::bind('nif') ?>
+                            </div>
+                            <div class="top-margin">
+                                <label>Contact <span class="text-danger">*</span></label>
+                                <input required type="text" value="<?=$user->telefone?>" name="telefone" class="form-control" placeholder="Insira o contacto">
+                                <?= ErrMgr::bind('telefone') ?>
+                            </div>
+                            <div class="top-margin">
+                                <label>Role <span class="text-danger">*</span></label>
+                                <select required type="text" value="<?=$user->role?>" name="role" class="form-control" placeholder="Insira o role">
+                                    <option value="gestorvoo">Gestor de Voo</option>
+                                    <option value="operadorcheckin">Operador de Checkin</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                                <?= ErrMgr::bind('role') ?>
+                            </div>
+
+
+                            <hr>
+
+                            <div class="col-lg-4 text-right">
+                                <button class="btn btn-action" type="submit">Adicionar</button>
+                            </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+
+    </div>
+
+    </article>
+    <!-- /Article -->
+
+</div>
+</div>	<!-- /container -->
+
+<?php Layout::includeLayout('footer') ?>

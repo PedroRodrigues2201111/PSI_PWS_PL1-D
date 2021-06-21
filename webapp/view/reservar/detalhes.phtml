@@ -1,0 +1,117 @@
+<?php use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\ErrMgr;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+
+Layout::includeLayout('indexheaderdologin') ?>
+<?php $flight = Data::get('flight') ?>
+<?php ErrMgr::attach($flight) ?>
+
+<!-- container -->
+<div class="container">
+
+  <div class="row">
+
+    <!-- Article main content -->
+    <article class="col-xs-12 maincontent">
+      <header class="page-header">
+        <h1 class="page-title">Voo selecionado</h1>
+      </header>
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+
+          <hr>
+
+          <form class="form-horizontal" method="post" action="<?=Url::toRoute('flight/update', $flight->id)?>">
+
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="name">Data de partida: <span class="text-danger">*</span></label>
+              <div class="col-sm-6">
+                <input required type="text" value="<?=$flight->dtorigin?>" class="form-control" required name="dtorigin" placeholder="Insira aaaa/mm/dd" readonly>
+                <?= ErrMgr::bind('dtorigin') ?>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="localization">Data de chegada: <span class="text-danger">*</span></label>
+              <div class="col-sm-6">
+                <input required type="text" value="<?=$flight->dtdestination?>" class="form-control" required name="dtdestination" placeholder="Insira aaaa/mm/dd" readonly>
+                <?= ErrMgr::bind('dtdestination') ?>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="contact">Hora de partida: <span class="text-danger">*</span></label>
+              <div class="col-sm-6">
+                <input required type="text" value="<?=$flight->hrorigin?>"  class="form-control" required name="hrorigin" placeholder="Insira HH:mm:ss" readonly>
+                <?= ErrMgr::bind('contact') ?>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="country">Hora de chegada: <span class="text-danger">*</span></label>
+              <div class="col-sm-6">
+                <input required type="text" value="<?=$flight->hrdestination?>" class="form-control" required name="hrdestination" placeholder="Insira HH:mm:ss" readonly>
+                <?= ErrMgr::bind('hrdestination') ?>
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <br>
+      <div class="form-group">
+              <label class="control-label col-sm-2" for="name">Tipo de passagem:<span class="text-danger">*</span></label>
+              <div class="col-sm-6">
+                <select required type="text" value="<?=$flight->tipopassagem?>" class="form-control" name="tipopassagem" placeholder="Enter tipodepassagem">
+
+                  <!-- Opção de selecionar uma das 3 opções de role -->
+                  <option value="idaevolta">Ida e volta</option>
+                  <option value="ida">Ida</option>
+                </select>
+                <?= ErrMgr::bind('tipopassagem') ?>
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="name">Método de pagamento:<span class="text-danger">*</span></label>
+              <div class="col-sm-6">
+                <select required type="text" value="<?=$flight->metodopagamento?>" class="form-control" name="metodopagamento" placeholder="Enter metodopagamento">
+
+                  <!-- Opção de selecionar uma das 3 opções de role -->
+                  <option value="gestorvoo">Visa / Mastercard</option>
+                  <option value="operadorcheckin">Multibanco</option>
+                  <option value="admin">MbWay</option>
+                </select>
+                <?= ErrMgr::bind('metodopagamento') ?>
+              </div>
+            </div>
+
+  <br>  <br>
+
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="name">Preço total:<span class="text-danger">*</span></label>
+            <div class="col-sm-6">
+              <input required type="text" value="100€" class="form-control" placeholder="Insira o preço" readonly>
+            </div>
+          </div>
+
+            <br>  <br>  <br>
+
+        </div>
+        </form>
+      </div>
+  </div>
+
+
+
+  </article>
+  <!-- /Article -->
+
+</div>
+</div>	<!-- /container -->
+
+<?php Layout::includeLayout('footer') ?>

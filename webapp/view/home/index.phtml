@@ -1,0 +1,62 @@
+<?php
+use ArmoredCore\WebObjects\Asset;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+
+Layout::includeLayout('indexheader'); ?>
+
+<!-- Header -->
+<header id="head">
+  <div class="container">
+    <div class="row">
+      <h1 class="lead"><b>FlightTravelAir</b><br><small><b>Companhia</b>Aérea</small><br>Uma companhia de preferencia para viajar!</h1>
+      <p class="tagline">Developing better Apps. Creating better professionals.</p>
+      <p><a class="btn btn-action btn-lg" role="button" href="<?= Url::toRoute('reservar/index')?>">Reserve já</a></p>
+      <p class="small">By<i> Pedro Rodrigues & Isaías Caldeira, Php</i></p>
+    </div>
+  </div>
+</header>
+<!-- /Header -->
+
+<!-- Intro -->
+<div class="container text-center">
+  <br>
+  <img width="25%" height="25%" src="<?=Asset::image('aviaoavoar.jpg')?>">
+  <h2 class="thin">    Planeie a sua viagem com a FlightTravelAir</h2>
+  <br>
+  <p class="text-muted">
+    A FlightTravelAir continua, gradualmente, a ajustar a sua operação em resposta ao levantamento das restrições impostas à mobilidade das pessoas e à sua vontade e desejo em viajar. Sempre com a maior segurança.  </p>
+
+
+
+    </div>
+    <div class="col-sm-6">
+
+    </div>
+  </div> <!-- /row -->
+
+  <div class="jumbotron top-space">
+    <h4><strong>Alertas e Informações</strong>
+      <h4>TESTE COVID - Passageiros com destino a Portugal</h4>
+      <h5>
+        <ul>
+          <li><strong>Passageiros a chegar do:</strong> Brasil, África do Sul e Índia devem cumprir isolamento profilático de 14 dias na sua residência ou outro local indicado pelas autoridades (com exceção de permanência em Portugal inferior a 48h), e preencher obrigatoriamente o formulário de pré-registo disponível aqui. (Passageiros com partida dos países mencionados que não apresentem o formulário não poderão viajar.)</li>
+          <li><strong>Todos os passageiros com destino a Portugal Continental</strong>, seja como destino final, em trânsito ou transferência, terão que completar este formulário online após a realização do check-in.
+            O comprovativo do seu preenchimento deverá ser apresentado nos pontos de controlo.</li>
+          <li><strong>De acordo com disposto pelo Governo Português a entrada em território nacional está apenas autorizada a:</strong>
+          <li> 1. Passageiros de voos de países que integram a União Europeia, dos países associados ao Espaço Schengen (Liechtenstein, Noruega, Islândia e Suíça) e Reino Unido</li>
+          <li> 2. Passageiros de voos de países cuja situação epidemiológica esteja de acordo com a Recomendação (UE) 2020/1551, do Conselho, de 22 de Outubro de 2020.</li>
+          <li> 3. Passageiros de voos de países que não integram a União Europeia ou que não sejam países associados ao Espaço Schengen, exclusivamente para viagens essenciais</li>
+          <li> 4. Passageiros de voos de repatriamento ou humanitários organizados nos termos da lei.</li>
+          <li><strong>Motivos essenciais são:</strong> motivos profissionais, de estudo, de reunião familiar, por razões de saúde ou por razões humanitárias.</li></h5>
+      <h4>Operação</h4>
+      <h5>
+        <ul>
+          <li><strong>A nossa operação respeita</strong>  o quadro de restrições à mobilidade das pessoas definido, a cada momento, pelas autoridades governamentais dos países onde a Companhia opera. Pelo que este plano de operação está sujeito a alterações.</li>
+      </h5>
+      <p class="text-right"><a class="btn btn-primary btn-large">Learn more »</a></p>
+  </div>
+
+</div>	<!-- /container -->
+
+<?php Layout::includeLayout('footer')?>

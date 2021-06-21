@@ -1,0 +1,22 @@
+<?php
+use ArmoredCore\WebObjects\URL;
+use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\Layout;
+
+Layout::includeLayout('gestorappheader') ?>
+
+  <!-- container -->
+  <div class="container">
+
+    <ol class="breadcrumb">
+      <li><a href="<?=URL::toRoute('gestorvoo/index')?>">Principal</a></li>
+      <li class="active">Gestor de Voo</li>
+    </ol>
+
+    <h2 class="text-left top-space">Página de gestor de voo</h2>
+    <h2 class="top-space"></h2>
+    <h4 class="top-space">Área de controlo, destinada ao gestor do aeroporto</h4>
+    <h5 class="top-space">O gestor do aeroporto, tem o acesso a: <p></p>- Gestão dos voos; <p></p>- Gestão das escalas; <p></p>- Gestão dos aviões. </h5>
+
+  </div>	<!-- /container -->
+<?php Layout::includeLayout('footer')?>

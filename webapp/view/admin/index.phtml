@@ -1,0 +1,20 @@
+<?php
+use ArmoredCore\WebObjects\URL;
+use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\Layout;
+
+Layout::includeLayout('adminappheader') ?>
+
+<!-- container -->
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="<?=URL::toRoute('admin/index')?>">Principal</a></li>
+        <li class="active">Administrador</li>
+    </ol>
+
+    <h2 class="text-left top-space">Página de Administrador</h2>
+    <h4 class="top-space">Área de controlo, destinada ao administrador do aeroporto</h4>
+    <h5 class="top-space">O administrador, tem o acesso a: <p></p>- Gestão dos aeroportos; <p></p>- Gestão do Staff. </h5>
+
+</div>	<!-- /container -->
+<?php Layout::includeLayout('footer')?>

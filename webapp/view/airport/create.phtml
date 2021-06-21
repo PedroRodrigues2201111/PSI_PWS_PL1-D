@@ -1,0 +1,66 @@
+<?php use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\ErrMgr;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+
+Layout::includeLayout('adminappheader') ?>
+<?php $airport = Data::get('airport')?>
+<?php ErrMgr::attach($airport) ?>
+
+
+    <!-- container -->
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Article main content -->
+            <article class="col-xs-12 maincontent">
+                <header class="page-header">
+                    <h1 class="page-title">Novo aeroporto</h1>
+                </header>
+
+                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <hr>
+                            <form method="post" action="<?=Url::toRoute('airport/store')?>">
+                                <div class="top-margin">
+                                    <label>Nome do aeroporto <span class="text-danger">*</span></label>
+                                    <input required type="text" value="<?=$airport->name?>" name="name" class="form-control" placeholder="Insira o aeroporto">
+                                    <?= ErrMgr::bind('name') ?>
+                                </div>
+                                <div class="top-margin">
+                                    <label>Localização <span class="text-danger">*</span></label>
+                                    <input required type="text" value="<?=$airport->localization?>" name="localization" class="form-control" placeholder="Insira a localização">
+                                    <?= ErrMgr::bind('localization') ?>
+                                </div>
+                                <div class="top-margin">
+                                    <label>Contacto <span class="text-danger">*</span></label>
+                                    <input required type="text" value="<?=$airport->contact?>" name="contact" class="form-control" placeholder="Insira o contacto do aeroporto">
+                                    <?= ErrMgr::bind('contact') ?>
+                                </div>
+                                <div class="top-margin">
+                                    <label>País <span class="text-danger">*</span></label>
+                                    <input required type="text" value="<?=$airport->country?>" name="country" class="form-control" placeholder="Insira o país">
+                                    <?= ErrMgr::bind('country') ?>
+                                </div>
+
+                                <hr>
+
+                                <div class="col-lg-4 text-right">
+                                    <button class="btn btn-action" type="submit">Adicionar</button>
+                                </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+
+        </div>
+
+        </article>
+        <!-- /Article -->
+
+    </div>
+    </div>	<!-- /container -->
+
+<?php Layout::includeLayout('footer') ?>

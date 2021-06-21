@@ -1,0 +1,76 @@
+<?php
+use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+
+Layout::includeLayout('indexheaderdologin') ?>
+<?php $flights = Data::get('flights') ?>
+
+<!-- container -->
+<div class="container">
+
+  <ol class="breadcrumb">
+    <li><a href="<?=URL::toRoute('reservar/index')?>">Principal</a></li>
+    <li class="active">Reservar voo</li>
+  </ol>
+
+  <h2 class="text-left top-space">Voos atualmente disponíveis</h2>
+
+  <!-- Pesquisar por origem dos voos -->
+  <h3>Pesquisar por voos</h3>
+  <form method="POST" action="<?=URL::toRoute('reservar/pesquisarorigem')?>">
+    Origem: <input type="text" name="pesquisar" placeholder="Insira a origem">
+    <input type="submit" value="Pesquisar">
+  </form>
+
+  <!-- Pesquisar por destino dos voos -->
+  <form method="POST" action="<?=URL::toRoute('reservar/pesquisadestino')?>">
+    Destino: <input type="text" name="pesquisar" placeholder="Insira o destino">
+    <input type="submit" value="Pesquisar">
+  </form>
+
+  <!-- Pesquisar por data de origem dos voos -->
+  <form method="POST" action="<?=URL::toRoute('reservar/pesquisardataorigem')?>">
+    Data de origem: <input type="text" name="pesquisar" placeholder="Insira a data de origem">
+    <input type="submit" value="Pesquisar">
+  </form>
+
+  <!-- Pesquisar por data de destino dos voos -->
+  <form method="POST" action="<?=URL::toRoute('reservar/pesquisardatadestino')?>">
+    Data de destino: <input type="text" name="pesquisar" placeholder="Insira a data de destino">
+    <input type="submit" value="Pesquisar">
+  </form>
+
+
+  <h2 class="top-space"></h2>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-striped"><thead><th><h4>Id</h4></th><th><h4>Preço</h4></th><th><h4>Aeroporto de origem</h4></th><th><h4>Data Partida</h4></th><th><h4>Hora de partida</h4></th><th><h4>Aeroporto de destino</h4></th><th><h4>Data de destino</h4></th><th><h4>Hora de destino</h4></th></thead>
+        <tbody>
+        <?php foreach ($flights as $flight) { ?>
+          <tr>
+            <td class="text-center"><?=$flight->id?></td>
+            <td class="text-center"><?=$flight->precoidaevolta?></td>
+            <td class="text-center"><?=$flight->idairportorigin?></td>
+            <td class="text-center"><?=$flight->dtorigin?></td>
+            <td class="text-center"><?=$flight->hrorigin?></td>
+            <td class="text-center"><?=$flight->idairportdestination?></td>
+            <td class="text-center"><?=$flight->dtdestination?></td>
+            <td class="text-center"><?=$flight->hrdestination?></td>
+            <td>
+              <a href="<?=Url::toRoute('layover/index', $flight->id)?>" class="btn btn-info" role="button">Escalas</a>
+              <a href="<?=Url::toRoute('reservar/edit', $flight->id)?>" class="btn btn-warning" role="button">Detalhes</a>
+            </td>
+          </tr>
+        <?php } ?>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div> <!-- /row -->
+
+</div>	<!-- /container -->
+<?php Layout::includeLayout('footer')?>

@@ -1,0 +1,22 @@
+<?php
+use ArmoredCore\WebObjects\URL;
+use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\Layout;
+
+Layout::includeLayout('operadorheader') ?>
+
+<!-- container -->
+<div class="container">
+
+  <ol class="breadcrumb">
+    <li><a href="<?=URL::toRoute('gestorvoo/index')?>">Principal</a></li>
+    <li class="active">Operador de Check-in</li>
+  </ol>
+
+  <h2 class="text-left top-space">Página de Operador de Check-in</h2>
+  <h2 class="top-space"></h2>
+  <h4 class="top-space">Área de controlo, destinada ao operador de check-in</h4>
+  <h5 class="top-space">O operador de check-in, tem o acesso a: <p></p>- Realizar o checkin de um passageiro; <p></p>- Visualizar os detalhes do voo (clientes com checkin já realizado ou não). </h5>
+
+</div>	<!-- /container -->
+<?php Layout::includeLayout('footer')?>

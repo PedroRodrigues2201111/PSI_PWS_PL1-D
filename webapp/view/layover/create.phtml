@@ -1,0 +1,109 @@
+<?php use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\ErrMgr;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+use ArmoredCore\WebObjects\Debug;
+
+Layout::includeLayout('gestorappheader') ?>
+<?php $layover = Data::get('layover')?>
+<?php $airports = Data::get('airports')?>
+<?php $idflight = Data::get('idflight')?>
+<?php ErrMgr::attach($layover) ?>
+
+
+<!-- container -->
+<div class="container">
+
+    <div class="row">
+
+        <!-- Article main content -->
+        <article class="col-xs-12 maincontent">
+            <header class="page-header">
+                <h1 class="page-title">Nova Escala</h1>
+            </header>
+
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <hr>
+                        <form method="post" action="<?=Url::toRoute('layover/store')?>">
+                            <div>
+                                <input type="hidden" value="<?=$idflight?>" name="idflight">
+                            </div>
+                            <div>
+                                <label>Aeroporto de Origem<span class="text-danger">*</span></label>
+                                <select name="idairportfrom">
+                                    <?php
+                                        foreach ($airports as $airport){
+                                            echo '<option value="' . $airport->id . '">' .$airport->name.'</option>';
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                            <hr>
+                            <div>
+                                <label>Aeroporto de Destino<span class="text-danger">*</span></label>
+                                <select name="idairporttoo">
+                                    <?php
+                                    foreach ($airports as $airport){
+                                        echo '<option value="' . $airport->id . '">' .$airport->name.'</option>';
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <hr>
+                            <div class="top-margin">
+                                <label>Distancia <span class="text-danger">*</span></label>
+                                <input required type="text" value="<?=$layover->distance?>" name="distance" class="form-control" placeholder="Insira a distancia">
+                                <?= ErrMgr::bind('distance') ?>
+                            </div>
+                            <hr>
+                            <div class="top-margin">
+                                <label>Preço <span class="text-danger">*</span></label>
+                                <input required type="text" value="<?=$layover->price?>" name="price" class="form-control" placeholder="Insira o preço">
+                                <?= ErrMgr::bind('price') ?>
+                            </div>
+                            <hr>
+                            <div class="top-margin">
+                                <label>Data de Origem <span class="text-danger">*</span></label>
+                                <input required type="text" value="<?=$layover->dtorigin?>" name="dtorigin" class="form-control" placeholder="Insira aaaa/mm/dd">
+                                <?= ErrMgr::bind('dtdestino') ?>
+                            </div>
+                            <hr>
+                            <div class="top-margin">
+                                <label>Data de Destino <span class="text-danger">*</span></label>
+                                <input required type="text" value="<?=$layover->dtdestination?>" name="dtdestination" class="form-control" placeholder="Insira aaaa/mm/dd">
+                                <?= ErrMgr::bind('dtdestination') ?>
+                            </div>
+                            <hr>
+                            <div class="top-margin">
+                                <label>Hora de Origem <span class="text-danger">*</span></label>
+                                <input required type="text" value="<?=$layover->hrorigin?>" name="hrorigin" class="form-control" placeholder="Insira HH:mm:ss">
+                                <?= ErrMgr::bind('hrorigin') ?>
+                            </div>
+                            <hr>
+                            <div class="top-margin">
+                                <label>Hora de Destino <span class="text-danger">*</span></label>
+                                <input required type="text" value="<?=$layover->hrdestination?>" name="hrdestination" class="form-control" placeholder="Insira HH:mm:ss">
+                                <?= ErrMgr::bind('hrdestination') ?>
+                            </div>
+
+                            <hr>
+
+                            <div class="col-lg-4 text-right">
+                                <button class="btn btn-action" type="submit">Novo</button>
+                            </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+
+    </div>
+
+    </article>
+    <!-- /Article -->
+
+</div>
+</div>	<!-- /container -->
+
+<?php Layout::includeLayout('footer') ?>

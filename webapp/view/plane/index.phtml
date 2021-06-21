@@ -1,0 +1,49 @@
+<?php
+use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+use ArmoredCore\WebObjects\Debug;
+
+Layout::includeLayout('gestorappheader') ?>
+<?php $planes = Data::get('planes') ?>
+<!-- container -->
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li><a href="<?=URL::toRoute('gestorvoo/index')?>">Principal</a></li>
+        <li class="active">Aviões</li>
+    </ol>
+
+    <h2 class="text-left top-space">Aviões</h2>
+    <h2 class="top-space"></h2>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-striped"><thead><th><h3>Referência</h3></th><th><h3>Capacidade</h3></th><th><h3>Tipo</h3></th></thead>
+                <tbody>
+                <?php foreach ($planes as $plane) { ?>
+                    <tr>
+                        <td><?=$plane->reference?></td>
+                        <td><?=$plane->capacity?></td>
+                        <td><?=$plane->type?></td>
+                        <td>
+                            <a href="<?=Url::toRoute('plane/edit', $plane->id)?>" class="btn btn-info" role="button">Editar</a>
+                            <a href="<?=Url::toRoute('plane/destroy', $plane->id)?>" class="btn btn-warning" role="button">Apagar</a>
+                        </td>
+                    </tr>
+                <?php } ?>
+
+                </tbody>
+
+            </table>
+
+        </div>
+        <div class="col-sm-6">
+            <h3>Adicionar um novo Avião</h3>
+            <p>
+                <a href="<?=Url::toRoute('plane/create')?>" class="btn btn-info" role="button">Adicionar</a>
+            </p>
+        </div>
+    </div> <!-- /row -->
+
+</div>	<!-- /container -->
+<?php Layout::includeLayout('footer')?>

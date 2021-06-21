@@ -1,0 +1,61 @@
+<?php use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\ErrMgr;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+
+Layout::includeLayout('gestorappheader') ?>
+<?php $plane = Data::get('plane')?>
+<?php ErrMgr::attach($plane) ?>
+
+
+<!-- container -->
+<div class="container">
+
+    <div class="row">
+
+        <!-- Article main content -->
+        <article class="col-xs-12 maincontent">
+            <header class="page-header">
+                <h1 class="page-title">Novo Avião</h1>
+            </header>
+
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <hr>
+                        <form method="post" action="<?=Url::toRoute('plane/store')?>">
+                            <div class="top-margin">
+                                <label>Referencia <span class="text-danger">*</span></label>
+                                <input required type="text" value="<?=$plane->reference?>" name="reference" class="form-control" placeholder="Insira a referência">
+                                <?= ErrMgr::bind('reference') ?>
+                            </div>
+                            <div class="top-margin">
+                                <label>Capacidade <span class="text-danger">*</span></label>
+                                <input required type="number" value="<?=$plane->capacity?>" name="capacity" class="form-control" placeholder="Insira a capacidade">
+                                <?= ErrMgr::bind('capacity') ?>
+                            </div>
+                            <div class="top-margin">
+                                <label>Tipo <span class="text-danger">*</span></label>
+                                <input required type="text" value="<?=$plane->type?>" name="type" class="form-control" placeholder="Insira o tipo de avião">
+                                <?= ErrMgr::bind('type') ?>
+                            </div>
+
+                            <hr>
+
+                            <div class="col-lg-4 text-right">
+                                <button class="btn btn-action" type="submit">Adicionar</button>
+                            </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+
+    </div>
+
+    </article>
+    <!-- /Article -->
+
+</div>
+</div>	<!-- /container -->
+
+<?php Layout::includeLayout('footer') ?>

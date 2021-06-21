@@ -1,0 +1,96 @@
+<?php use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\ErrMgr;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+
+Layout::includeLayout('adminappheader') ?>
+<?php $user = Data::get('user') ?>
+<?php ErrMgr::attach($user) ?>
+
+<!-- container -->
+<div class="container">
+
+    <div class="row">
+
+        <!-- Article main content -->
+        <article class="col-xs-12 maincontent">
+            <header class="page-header">
+                <h1 class="page-title">Editar membro de Staff</h1>
+            </header>
+
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <hr>
+
+
+                    <form class="form-horizontal" method="post" action="<?=Url::toRoute('user/update', $user->id)?>">
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="name">Name:<span class="text-danger">*</span></label>
+                            <div class="col-sm-6">
+                                <input required type="text" value="<?=$user->name?>" class="form-control" required name="name" placeholder="Insira o nome">
+                                <?= ErrMgr::bind('name') ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="name">Morada:<span class="text-danger">*</span></label>
+                            <div class="col-sm-6">
+                                <input required type="text" value="<?=$user->morada?>" class="form-control" required name="morada" placeholder="Insira a morada">
+                                <?= ErrMgr::bind('morada') ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="name">Email:<span class="text-danger">*</span></label>
+                            <div class="col-sm-6">
+                                <input type="text" required value="<?=$user->email?>" class="form-control" name="email" placeholder="Insira o email">
+                                <?= ErrMgr::bind('email') ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="name">Nif:<span class="text-danger">*</span></label>
+                            <div class="col-sm-6">
+                                <input required type="text" required value="<?=$user->nif?>" class="form-control" name="nif" placeholder="Insira o nif">
+                                <?= ErrMgr::bind('nif') ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="name">Contact:<span class="text-danger">*</span></label>
+                            <div class="col-sm-6">
+                                <input required type="text" required value="<?=$user->telefone?>" class="form-control" name="telefone" placeholder="Insira o contacto">
+                                <?= ErrMgr::bind('telefone') ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="name">Email:<span class="text-danger">*</span></label>
+                            <div class="col-sm-6">
+                                <input required type="text" required value="<?=$user->role?>" class="form-control" name="role" placeholder="Insira o role">
+                                <?= ErrMgr::bind('role') ?>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="col-lg-4 text-right">
+                            <button class="btn btn-default" type="submit">Guardar</button>
+                        </div>
+                </div>
+                </form>
+            </div>
+    </div>
+
+
+
+    </article>
+    <!-- /Article -->
+
+</div>
+</div>	<!-- /container -->
+
+<?php Layout::includeLayout('footer') ?>

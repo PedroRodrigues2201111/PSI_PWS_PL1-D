@@ -1,0 +1,111 @@
+<?php use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\ErrMgr;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+
+Layout::includeLayout('gestorappheader') ?>
+<?php $layover = Data::get('layover') ?>
+<?php $airports = Data::get('airports')?>
+<?php ErrMgr::attach($layover) ?>
+
+<!-- container -->
+<div class="container">
+
+    <div class="row">
+
+        <!-- Article main content -->
+        <article class="col-xs-12 maincontent">
+            <header class="page-header">
+                <h1 class="page-title">Editar Aeroporto</h1>
+            </header>
+
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <hr>
+
+                    <form class="form-horizontal" method="post" action="<?=Url::toRoute('layover/update', $layover->id)?>">
+                        <div>
+                            <label>Aeroporto de Origem<span class="text-danger">*</span></label>
+                            <select name="idairportfrom">
+                                <?php
+                                foreach ($airports as $airport){
+                                    echo '<option value="' . $airport->id . '">' .$airport->name.'</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <hr>
+                        <div>
+                            <label>Aeroporto de Destino<span class="text-danger">*</span></label>
+                            <select name="idairporttoo">
+                                <?php
+                                foreach ($airports as $airport){
+                                    echo '<option value="' . $airport->id . '">' .$airport->name.'</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="name">Distância: <span class="text-danger">*</span></label>
+                            <div class="col-sm-6">
+                                <input required type="text" value="<?=$layover->distance?>" class="form-control" required name="distance" placeholder="Insira a distância">
+                                <?= ErrMgr::bind('distance') ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="localization">Preço: <span class="text-danger">*</span></label>
+                            <div class="col-sm-6">
+                                <input required type="text" value="<?=$layover->price?>" class="form-control" required name="price" placeholder="Insira o preço">
+                                <?= ErrMgr::bind('price') ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="contact">Data de partida: <span class="text-danger">*</span></label>
+                            <div class="col-sm-6">
+                                <input required type="text" value="<?=$layover->dtorigin?>"  class="form-control" required name="dtorigin" placeholder="Insira aaaa/mm/dd">
+                                <?= ErrMgr::bind('dtorigin') ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="country">Hora de partida: <span class="text-danger">*</span></label>
+                            <div class="col-sm-6">
+                                <input required type="text" value="<?=$layover->hrorigin?>" class="form-control" required name="hrorigin" placeholder="Insira HH:mm:ss">
+                                <?= ErrMgr::bind('hrorigin') ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="country">Data de chegada: <span class="text-danger">*</span></label>
+                            <div class="col-sm-6">
+                                <input required type="text" value="<?=$layover->dtdestination?>" class="form-control" required name="dtdestination" placeholder="Insira aaaa/mm/dd">
+                                <?= ErrMgr::bind('dtdestination') ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="country">Hora de chegada: <span class="text-danger">*</span></label>
+                            <div class="col-sm-6">
+                                <input required type="text" value="<?=$layover->hrdestination?>" class="form-control" required name="hrdestination" placeholder="Insira HH:mm:ss">
+                                <?= ErrMgr::bind('hrdestination') ?>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="col-lg-4 text-right">
+                            <button class="btn btn-default" type="submit">Guardar</button>
+                        </div>
+                </div>
+                </form>
+            </div>
+    </div>
+
+
+
+    </article>
+    <!-- /Article -->
+
+</div>
+</div>	<!-- /container -->
+
+<?php Layout::includeLayout('userappfooter') ?>

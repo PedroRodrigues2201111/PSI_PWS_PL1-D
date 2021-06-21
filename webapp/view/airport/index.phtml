@@ -1,0 +1,50 @@
+<?php
+use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+
+Layout::includeLayout('adminappheader') ?>
+<?php $airports = Data::get('airports') ?>
+
+<!-- container -->
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li><a href="<?=URL::toRoute('admin/index')?>">Principal</a></li>
+        <li class="active">Aeroportos</li>
+    </ol>
+
+    <h2 class="text-left top-space">Aeroportos</h2>
+    <h2 class="top-space"></h2>
+    <div class="row">
+        <div class="col-sm-14">
+            <table class="table table-striped"><thead><th><h3>Nome</h3></th><th><h3>Localização</h3></th><th><h3>Contacto</h3></th><th><h3>Pais</h3></th></thead>
+                <tbody>
+                <?php foreach ($airports as $airport) { ?>
+                    <tr>
+                        <td><?=$airport->name?></td>
+                        <td><?=$airport->localization?></td>
+                        <td><?=$airport->contact?></td>
+                        <td><?=$airport->country?></td>
+                        <td>
+                            <a href="<?=Url::toRoute('airport/edit', $airport->id)?>" class="btn btn-info" role="button">Editar</a>
+                            <a href="<?=Url::toRoute('airport/destroy', $airport->id)?>" class="btn btn-warning" role="button">Apagar</a>
+                        </td>
+                    </tr>
+                <?php } ?>
+
+                </tbody>
+
+            </table>
+
+        </div>
+        <div class="col-sm-6">
+            <h3>Adicionar um novo Aeroporto</h3>
+            <p>
+                <a href="<?=Url::toRoute('airport/create')?>" class="btn btn-info" role="button">Adicionar</a>
+            </p>
+        </div>
+    </div> <!-- /row -->
+
+</div>	<!-- /container -->
+<?php Layout::includeLayout('footer')?>

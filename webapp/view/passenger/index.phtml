@@ -1,0 +1,40 @@
+<?php
+use ArmoredCore\WebObjects\URL;
+use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\Layout;
+
+Layout::includeLayout('indexheaderdologin') ?>
+<?php $user = Data::get('user')?>
+<?php $flights = Data::get('flights') ?>
+
+<!-- container -->
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li><a href="<?=URL::toRoute('passenger/index')?>">Principal</a></li>
+        <li class="active">Página Inicial - Passageiro</li>
+    </ol>
+
+    <h2 class="text-left top-space">Página Inicial - Passageiro</h2>
+    <h2 class="top-space"></h2>
+    <h2 class="text-left top-space">Voos</h2>
+    <h2 class="top-space"></h2>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-striped"><thead><th><h3>Data Origem</h3></th><th><h3>Hora Origem</h3></th><th><h3>Data Destino</h3></th><th><h3>Hora Destino</h3></th></thead>
+                <tbody>
+                    <?php foreach ($flights as $flight) { ?>
+                        <tr>
+                            <td><?=$flight->dtorigin?></td>
+                            <td><?=$flight->hrorigin?></td>
+                            <td><?=$flight->dtdestination?></td>
+                            <td><?=$flight->hrdestination?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>	<!-- /container -->
+
+<?php Layout::includeLayout('userappfooter')?>

@@ -1,0 +1,70 @@
+<?php
+use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+use ArmoredCore\WebObjects\Debug;
+
+Layout::includeLayout('gestorappheader') ?>
+<?php $flight = Data::get('flight') ?>
+<?php $layovers = Data::get('layovers')?>
+
+<!-- container -->
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li><a href="<?=URL::toRoute('gestorvoo/index')?>">Principal</a></li>
+        <li class="active">Escalas</li>
+    </ol>
+    <h1>ID do Voo: <?=$flight->id?></h1>
+    <h2 class="text-left top-space">Escalas</h2>
+    <h2 class="top-space"></h2>
+    <div class="row">
+        <div class="col-lg-pull-8">
+            <table class="table table-striped"><thead><th><h3>ID</h3></th><th><h3>Id Aeroporto Origem</h3></th><th><h3>Id Aeroporto Destino</h3></th><th><h3>Distancia - Km</h3><th><h3>Preço - €</h3></th></th><th><h3>Data de partida</h3></th><th><h3>Data de destino</h3></th><th><h3>Hora de partida</h3></th><th><h3>Hora de destino</h3></th></thead>
+                <tbody>
+                <?php foreach ($layovers as $layover) { ?>
+                    <tr>
+                        <td><?=$layover->id?></td>
+                        <td><?=$layover->idairportfrom?></td>
+                        <td><?=$layover->idairporttoo?></td>
+                        <td><?=$layover->distance?></td>
+                        <td><?=$layover->price?></td>
+                        <td><?=$layover->dtorigin?></td>
+                        <td><?=$layover->dtdestination?></td>
+                        <td><?=$layover->hrorigin?></td>
+                        <td><?=$layover->hrdestination?></td>
+                        <td><a href="<?=Url::toRoute('layover/edit', $layover->id)?>" class="btn btn-info" role="button">Editar</a></td>
+                        <td><a href="<?=Url::toRoute('planelayover/create', $layover->id)?>" class="btn btn-warning" role="button">Avião</a></td>
+                        <td><a href="<?=Url::toRoute('layover/destroy', $layover->id)?>" class="btn btn-danger" role="button">Remover</a></td>
+                    </tr>
+                <?php } ?>
+
+                </tbody>
+
+            </table>
+
+        </div>
+        <div class="col-sm-6">
+            <h3>Adicionar nova escala</h3>
+            <p>
+                <a href="<?=Url::toRoute('layover/create', $flight->id)?>" class="btn btn-info" role="button">Novo</a>
+            </p>
+        </div>
+        <div class="col-sm-6">
+            <h3>Finalizar Voo</h3>
+            <p>
+              <?php foreach ($layovers as $layover) { ?>
+
+              <a href="<?=Url::toRoute('layover/done', [array($layover->idairportfrom, $layover->idairporttoo, $layover->price)])?>" class="btn btn-info" role="button">Finalizar Voo</a>
+                <?= var_dump($layover->idaiportfrom);
+                Die;
+                ?>
+              <?php } ?>
+
+            </p>
+        </div>
+    </div> <!-- /row -->
+
+</div>	<!-- /container -->
+
+<?php Layout::includeLayout('footer')?>
