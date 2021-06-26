@@ -6,7 +6,7 @@
 ---------------------------------------------
 
 Webapp adicionado antes da data de entrega do projeto.
-Foi adicionado depois um ficheiro .zip com todo o projeto igual ao submetido no moodle, para caso seja necessário.
+Foi adicionado depois um ficheiro ProjetoPWS.zip com todo o projeto igual ao submetido no moodle, para caso seja necessário.
 
 ---------------------------------------------
 
